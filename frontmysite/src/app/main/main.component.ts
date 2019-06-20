@@ -27,7 +27,10 @@ export class MainComponent implements OnInit {
   public address = '';
   public postalcode = '';
   public city = '';
-
+  public regName = '';
+  public regPaswd1 = '';
+  public regPaswd2 = '';
+  public regOrNot = false;
   constructor(private provider: ProviderService) { }
 
   ngOnInit() {
@@ -41,6 +44,15 @@ export class MainComponent implements OnInit {
         this.categories = res;
       });
     }
+  }
+  registerCustomer() {
+    this.provider.registerUser(this.regName, this.regPaswd1, this.regPaswd2).then(res => {
+      this.regOrNot = false;
+      this.logged = false;
+    });
+  }
+  wantRegister() {
+    this.regOrNot = true;
   }
   getProductList(category: ICategory) {
     this.provider.getProduct(category.id).then(res => {

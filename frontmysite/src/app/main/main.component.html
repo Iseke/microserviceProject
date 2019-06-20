@@ -1,10 +1,22 @@
-<ng-container *ngIf="!logged">
+
+<ng-container *ngIf="regOrNot" class="register">
+  <div>Username<input type="text" [(ngModel)]="regName"></div>
+  <div>Password<input type="password" [(ngModel)]="regPaswd1"></div>
+  <div>Repet Password<input type="password" [(ngModel)]="regPaswd2"></div>
+  <div *ngIf="regPaswd2===regPaswd1">
+    <div><button (click)="registerCustomer()">Register</button></div>
+  </div>
+</ng-container>
+<ng-container *ngIf="!logged && !regOrNot" >
   <div class="login">
     <div><input type="text" [(ngModel)]="username"></div>
     <div><input type="password" [(ngModel)]="password"></div>
-    <div><button (click)="login()">Log In</button></div>
+    <div class="btnLg"><button (click)="login()">Log In</button></div>
+    <div class="btnLg"><button (click)="wantRegister()">Register</button></div>
+
   </div>
 </ng-container>
+
 <ng-container *ngIf="logged">
   <div class="logout">
     <div><button (click)="logout()">Log Out</button></div>

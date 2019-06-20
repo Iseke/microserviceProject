@@ -11,6 +11,13 @@ export class ProviderService extends MainService {
   constructor(http: HttpClient) {
     super(http);
   }
+  registerUser(nme: string, pswd1: any, pswd2: any) {
+    return this.post('http://localhost:8000/api/register/', {
+      username: nme,
+      password1: pswd1,
+      password2: pswd1
+    });
+  }
   getUsers(): Promise <IUser[]> {
     return this.get('http://localhost:8000/api/users/', {});
   }

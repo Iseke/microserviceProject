@@ -6,7 +6,7 @@
 .logout{
   width: 100px;
   height: 60px;
-  
+
 }
 .inCategory{
   width: 50%;
@@ -71,4 +71,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.btnLg{
+  width: 200px;
+  height: 30px;
 }
