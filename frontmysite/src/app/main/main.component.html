@@ -6,16 +6,17 @@
   </div>
 </ng-container>
 <ng-container *ngIf="logged">
-  <div class="login">
+  <div class="logout">
     <div><button (click)="logout()">Log Out</button></div>
   </div>
   <div class="inCategory">
-    <div *ngFor="let t of categories" (click) = "getProductList(t)" class = "category">
+    <div *ngFor="let t of categories" (click)="getProductList(t)"  class = "category">
       <div class="data">
         <input type="text" [(ngModel)]="t.name">
       </div>
-      <span (click) = "updateCat(t)">CHANGE</span>
-      <span (click) = "deleteCat(t)">DELETE</span>
+      <button class="updateBtn" (click) = "updateCat(t)">CHANGE</button>
+      <button class="deledteBtn" (click) = "deleteCat(t)">DELETE</button>
+      <button class="showBtn" (click) = "getProductList(t)">SHOW</button>
 
     </div>
     <div class="create">
@@ -24,4 +25,36 @@
     </div>
 
   </div>
+
+  <div class="inProduct">
+    <div>
+      <div *ngFor = "let t of products" class = "products">
+        Name: {{t.name}} Category: {{t.category}} Price: {{t.price}} Available: {{t.available}} Description: {{t.description}}
+        <div class="productInfo">
+          <div><span> Name: </span> <input type="text" [(ngModel)]="t.name"></div>
+          <div><span> Category: {{t.category.name}}</span></div>
+          <div><span> Available: </span> <input type="text" [(ngModel)]="t.available"></div>
+          <div><span> Price: </span> <input type="number" [(ngModel)]="t.price"></div>
+          <div><span> Description: </span> <input type="text" [(ngModel)]="t.description" ]></div>
+        </div>
+        <div >
+          <button class="updateBtn" (click) = "updateProd(t)">CHANGE</button>
+          <button class="deledteBtn" (click) = "deleteProd(t)">DELETE</button>
+        </div>
+      </div>
+    </div>
+    <div class="prodCreate">
+      <input type="text" class = "createInput" placeholder="New Product Name" [(ngModel)]="ProdName">
+      <input type="number" class = "createInput" placeholder="Write price " [(ngModel)]="price">
+      <input type="text" class = "createInput" placeholder="Write description " [(ngModel)]="description">
+      <input type="text" class = "createInput" placeholder="Available(true or false) " [(ngModel)]="available">
+
+      <button class="createBtn" (click) = "createProd()">CREATE</button>
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Write product name" [(ngModel)]="searchProduct">
+      <button (click)="searchProd()">Search</button>
+    </div>
+  </div>
+
 </ng-container>
